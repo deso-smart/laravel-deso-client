@@ -1,0 +1,34 @@
+{
+  "name": "deso-smart/laravel-deso-client",
+  "description": "Laravel DeSo Client",
+  "keywords": [
+    "laravel",
+    "deso"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Artem Didyk",
+      "email": "this.github@azate.email"
+    }
+  ],
+  "require": {
+    "php": "^8",
+    "illuminate/contracts": "^9",
+    "illuminate/config": "^9",
+    "illuminate/http": "^9",
+    "illuminate/support": "^9"
+  },
+  "autoload": {
+    "psr-4": {
+      "DesoSmart\\DesoClient\\": "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "DesoSmart\\DesoClient\\DesoClientServiceProvider"
+      ]
+    }
+  }
+}
