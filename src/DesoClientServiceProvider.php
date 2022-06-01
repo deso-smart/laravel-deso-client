@@ -17,7 +17,7 @@ final class DesoClientServiceProvider extends ServiceProvider
 
     private function getPackageConfigPath(): string
     {
-        return dirname(__DIR__) . '/config/deso_client.php';
+        return dirname(__DIR__).'/config/deso_client.php';
     }
 
     public function register(): void

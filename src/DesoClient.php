@@ -22,13 +22,15 @@ final class DesoClient
      * @throws DesoClientException
      * @throws DesoClientRequestException
      */
-    private function handlerThrow(Response $response, RequestException $e)
+    private function handlerThrow(Response $response, RequestException $e): void
     {
         $payload = $response->json();
 
         if (!empty($payload['error'])) {
             throw new DesoClientException($payload['error']);
-        } else if (!empty($payload['Error'])) {
+        }
+
+        if (!empty($payload['Error'])) {
             throw new DesoClientException($payload['Error']);
         }
 
@@ -193,7 +195,7 @@ final class DesoClient
 
     public function getAcceptedBidHistory(string $postHashHex): array
     {
-        return $this->requestGet('/api/v0/accepted-bid-history/' . $postHashHex);
+        return $this->requestGet('/api/v0/accepted-bid-history/'.$postHashHex);
     }
 
     public function getNextNFTShowcase(array $payload): array
@@ -463,7 +465,7 @@ final class DesoClient
 
     public function getUserMetadata(string $publicKeyBase58Check): array
     {
-        return $this->requestGet('/api/v0/get-user-metadata/' . $publicKeyBase58Check);
+        return $this->requestGet('/api/v0/get-user-metadata/'.$publicKeyBase58Check);
     }
 
     public function getUsersStateless(array $payload): array
@@ -498,7 +500,9 @@ final class DesoClient
 
     public function getTransactionSpendingLimitResponseFromHex(string $transactionSpendingLimitHex): array
     {
-        return $this->requestGet('/api/v0/get-transaction-spending-limit-response-from-hex/' . $transactionSpendingLimitHex);
+        return $this->requestGet(
+            '/api/v0/get-transaction-spending-limit-response-from-hex/'.$transactionSpendingLimitHex
+        );
     }
 }
 
