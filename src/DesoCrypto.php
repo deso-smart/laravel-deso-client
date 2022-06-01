@@ -59,12 +59,6 @@ final class DesoCrypto
         }
     }
 
-    public static function prepareDerivedKeyForExtraData(string $derivedPublicKey): string
-    {
-        // Truncate network prefix
-        return substr(Base58Codec::checkDecode($derivedPublicKey), 6);
-    }
-
     public static function signTxnWithDerivedKey(string $transactionHex, string $derivedKeySeedHex): string
     {
         $hash = hash('sha256', hash('sha256', hex2bin($transactionHex), true));
