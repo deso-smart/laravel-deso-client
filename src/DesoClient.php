@@ -504,5 +504,28 @@ final class DesoClient
             '/api/v0/get-transaction-spending-limit-response-from-hex/'.$transactionSpendingLimitHex
         );
     }
-}
 
+    public function metamaskSignIn(array $payload): Collection
+    {
+        return $this->requestPost('/api/v0/send-starter-deso-for-metamask-account', $payload);
+    }
+
+    public function getBulkMessagingPublicKeys(array $payload): Collection
+    {
+        return $this->requestPost('/api/v0/get-bulk-messaging-public-keys', $payload);
+    }
+
+    public function getSingleDerivedKey(
+        string $ownerPublicKeyBase58Check,
+        string $derivedPublicKeyBase58Check
+    ): Collection {
+        return $this->requestGet(
+            '/api/v0/get-single-derived-key/'.$ownerPublicKeyBase58Check.'/'.$derivedPublicKeyBase58Check
+        );
+    }
+
+    public function getAccessBytes(array $payload): Collection
+    {
+        return $this->requestPost('/api/v0/get-access-bytes', $payload);
+    }
+}
